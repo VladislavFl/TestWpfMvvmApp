@@ -4,11 +4,19 @@
                     xmlns:view="clr-namespace:TestWpfMvvmApp.View">
 
     <DataTemplate DataType="{x:Type vm:UserViewModel}">
-        <view:UserPage />
+        <view:UserView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:InfoViewModel}">
-        <view:InfoPage />
+        <view:InfoView />
     </DataTemplate>
-    
+
+    <DataTemplate DataType="{x:Type vm:GuestViewModel}">
+        <view:GuestView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AuthViewModel}">
+        <view:AuthView />
+    </DataTemplate>
+
 </ResourceDictionary>

@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Fonts\Roboto-Black.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\Roboto-Black.ttf" />
+  </ItemGroup>
+
 </Project>

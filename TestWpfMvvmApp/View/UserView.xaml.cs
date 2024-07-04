@@ -2,9 +2,9 @@
 
 namespace TestWpfMvvmApp.View
 {
-    public partial class InfoPage : UserControl
+    public partial class UserView : UserControl
     {
-        public InfoPage()
+        public UserView()
         {
             InitializeComponent();
         }

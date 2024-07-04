@@ -24,7 +24,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="9*"/>
             </Grid.RowDefinitions>
-            
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="7*"/>
                 <ColumnDefinition Width="3*"/>
@@ -32,36 +32,33 @@
 
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Width="100" Height="40" Content="Page 1"
-                            Command="{Binding UserCommand}"/>
-                    <Button Width="100" Height="40" Content="Page 2"
-                            Command="{Binding InfoCommand}"/>
+                    <Button Width="100" Height="40" Content="Пользователь"
+                            Command="{Binding UserCommand}"
+                            Style="{StaticResource BtnStyle}"/>
+                    <Button Width="100" Height="40" Content="Информация"
+                            Command="{Binding InfoCommand}"
+                            Style="{StaticResource BtnStyle}"/>
                 </StackPanel>
             </Grid>
-            
+
             <Grid Grid.Column="0" Grid.Row="1">
-                <ContentControl x:Name="Pages"
-                                Content="{Binding CurrentView}" />
+                <ContentControl x:Name="Pages" Content="{Binding CurrentView}" />
             </Grid>
 
             <Grid Grid.Column="1" Grid.Row="1">
-
-                <Border Background="#272B2F"
-                        CornerRadius="20,0,0,0" />
-
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Авторизация" FontSize="20" Foreground="White" HorizontalAlignment="Center"/>
-
-                    <TextBox Margin="0 20 0 0" Height="30">
-                        
-                    </TextBox>
-
-                    <TextBox Margin="0 20 0 20" Height="30">
-
-                    </TextBox>
-
-                    <Button Content="Логин" Height="30" Width="100"/>
-                </StackPanel>
+                <ContentControl x:Name="Auth" Content="{Binding AuthView}">
+                    <ContentControl.Style>
+                        <Style TargetType="ContentControl">
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsUserAuthorized}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ContentControl.Style>
+                </ContentControl>
+                
             </Grid>
         </Grid>
     </Grid>

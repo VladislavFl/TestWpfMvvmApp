@@ -1,29 +1,61 @@
 ﻿using System.Windows.Input;
+using TestWpfMvvmApp.Services;
 using TestWpfMvvmApp.Utilities;
 
 namespace TestWpfMvvmApp.ViewModel
 {
     internal class NavigationViewModel : ViewModelBase
     {
+        private object? _authView;
         private object? _currentView;
+        private bool _isUserAuthorized;
+
+
         public object? CurrentView
         {
-            get { return _currentView; }
+            get => _currentView;
             set { _currentView = value; OnPropertyChanged(); }
+        }
+
+        public object? AuthView
+        {
+            get => _authView;
+            set { _authView = value; OnPropertyChanged(); }
+        }
+
+        public bool IsUserAuthorized
+        {
+            get => _isUserAuthorized;
+            set { _isUserAuthorized = value; OnPropertyChanged(); }
         }
 
         public ICommand UserCommand { get; set; }
         public ICommand InfoCommand { get; set; }
+        public ICommand GuestCommand { get; set; }
 
-        private void User(object obj) => CurrentView = new UserViewModel();
+        private void User(object obj)
+        {
+            if (IsUserAuthorized)
+            {
+                CurrentView = new UserViewModel();
+            }
+            else
+            {
+                CurrentView = new GuestViewModel();
+            }
+        }
+
         private void Info(object obj) => CurrentView = new InfoViewModel();
+        private void Guest(object obj) => CurrentView = new GuestViewModel();
 
         public NavigationViewModel()
         {
             UserCommand = new RelayCommand(User);
             InfoCommand = new RelayCommand(Info);
+            GuestCommand = new RelayCommand(Guest);
 
-            CurrentView = new UserViewModel();
+            CurrentView = new GuestViewModel();
+            AuthView = new AuthViewModel();
         }
     }
 }

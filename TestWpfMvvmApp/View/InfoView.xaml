@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="TestWpfMvvmApp.View.InfoView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:vm="clr-namespace:TestWpfMvvmApp.ViewModel"
+      xmlns:local="clr-namespace:TestWpfMvvmApp.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="630" d:DesignWidth="630">
+
+    <UserControl.DataContext>
+        <vm:InfoViewModel />
+    </UserControl.DataContext>
+
+    <Grid>
+        <TextBlock Text="{Binding DevInfo}" FontSize="28" 
+                   HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"
+                   Style="{StaticResource TextStyle}"/>
+    </Grid>
+</UserControl>

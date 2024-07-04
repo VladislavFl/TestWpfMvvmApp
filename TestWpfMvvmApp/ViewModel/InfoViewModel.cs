@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TestWpfMvvmApp.ViewModel
+﻿namespace TestWpfMvvmApp.ViewModel
 {
-    internal class InfoViewModel
+    internal class InfoViewModel : Utilities.ViewModelBase
     {
+        private string _devInfo = "Разработчик: VladislavFl\nGitHub: https://github.com/VladislavFl";
+        public string DevInfo
+        {
+            get => _devInfo;
+            set
+            {
+                _devInfo = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }

@@ -2,9 +2,9 @@
 
 namespace TestWpfMvvmApp.View
 {
-    public partial class UserPage : UserControl
+    public partial class AuthView : UserControl
     {
-        public UserPage()
+        public AuthView()
         {
             InitializeComponent();
         }

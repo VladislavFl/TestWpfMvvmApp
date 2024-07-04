@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="TestWpfMvvmApp.View.AuthView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TestWpfMvvmApp.View"
+             xmlns:vm="clr-namespace:TestWpfMvvmApp.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="630" d:DesignWidth="270">
+
+    <UserControl.DataContext>
+        <vm:AuthViewModel />
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.RowSpan="2" Background="#272B2F" CornerRadius="20 0 0 0" />
+
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Авторизация" FontSize="20" HorizontalAlignment="Center"
+                           Style="{StaticResource TextStyle}"/>
+
+                <TextBlock Margin="5 25 5 5" Text="Логин:" FontSize="12" HorizontalAlignment="Left"
+                           Style="{StaticResource TextStyle}"/>
+                <TextBox Margin="5 0 5 5" Height="30"
+                         Style="{StaticResource TextBoxStyle}">
+                </TextBox>
+
+                <TextBlock Margin="5 25 5 5" Text="Пароль:" FontSize="12" HorizontalAlignment="Left"
+                           Style="{StaticResource TextStyle}"/>
+                <PasswordBox Margin="5 0 5 20" Height="30"
+                             Style="{StaticResource PasswordBoxStyle}">
+                </PasswordBox>
+
+                <Button Content="Login" Height="30" Width="100"
+                        Style="{StaticResource BtnStyle}"
+                        Command="{Binding LoginCommand}"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Button Content="Регистрация" Height="30" Width="100"
+                    Style="{StaticResource BtnStyle}"/>
+        </Grid>
+    </Grid>
+
+</UserControl>
