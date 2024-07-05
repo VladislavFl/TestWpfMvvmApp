@@ -3,6 +3,11 @@
     public interface IAuthStateService
     {
         bool IsUserAuthorized { get; set; }
-        void SetUserAuthorized(bool isAuthorized);
+        string Username { get; set; }
+
+        event EventHandler? UserAuthorized;
+        event EventHandler? UserNonAuthorized;
+
+        void SetUserAuthorized(bool isAuthorized, string username);
     }
 }

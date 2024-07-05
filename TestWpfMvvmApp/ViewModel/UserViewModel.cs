@@ -1,9 +1,19 @@
-﻿namespace TestWpfMvvmApp.ViewModel
+﻿using TestWpfMvvmApp.Services.Interfaces;
+using System.Windows;
+
+namespace TestWpfMvvmApp.ViewModel
 {
     internal class UserViewModel : Utilities.ViewModelBase
     {
-        private int _id;
-        public int Id
+        private readonly IUserService _userService;
+        private readonly IAuthStateService _authStateService;
+        private string _id = string.Empty;
+        private string _firstName = string.Empty;
+        private string _lastName = string.Empty;
+        private string _email = string.Empty;
+        private string _phone = string.Empty;
+
+        public string Id
         {
             get => _id;
             set
@@ -13,29 +23,26 @@
             }
         }
 
-        private string _name = string.Empty;
-        public string Name
+        public string FirstName
         {
-            get => _name;
+            get => _firstName;
             set
             {
-                _name = value;
+                _firstName = value;
                 OnPropertyChanged();
             }
         }
 
-        private string _surname = string.Empty;
-        public string Surname
+        public string LastName
         {
-            get => _surname;
+            get => _lastName;
             set
             {
-                _surname = value;
+                _lastName = value;
                 OnPropertyChanged();
             }
         }
 
-        private string _email = string.Empty;
         public string Email
         {
             get => _email;
@@ -46,7 +53,6 @@
             }
         }
 
-        private string _phone = string.Empty;
         public string Phone
         {
             get => _phone;
@@ -57,13 +63,28 @@
             }
         }
 
-        public UserViewModel()
+        public UserViewModel(IUserService userService, IAuthStateService authStateService)
         {
-            Id = 11119999;
-            Name = "Name";
-            Surname = "Surname";
-            Email = "Email";
-            Phone = "Phone";
+            _userService = userService;
+            _authStateService = authStateService;
+            LoadUserData();
+        }
+
+        private async void LoadUserData()
+        {
+            try
+            {
+                var user = await _userService.GetUserDataAsync(_authStateService.Username);
+                Id = user.Id.ToString();
+                FirstName = user.FirstName;
+                LastName = user.LastName;
+                Email = user.Email;
+                Phone = user.Phone;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

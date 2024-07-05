@@ -43,19 +43,7 @@
             </Grid>
 
             <Grid Grid.Column="1" Grid.Row="1">
-                <ContentControl x:Name="Auth" Content="{Binding AuthView}">
-                    <ContentControl.Style>
-                        <Style TargetType="ContentControl">
-                            <Setter Property="Visibility" Value="Visible"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsUserAuthorized}" Value="True">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </ContentControl.Style>
-                </ContentControl>
-                
+                <ContentControl x:Name="Auth" Content="{Binding AuthView}" />
             </Grid>
         </Grid>
     </Grid>

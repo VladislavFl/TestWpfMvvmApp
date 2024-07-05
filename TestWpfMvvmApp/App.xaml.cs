@@ -5,6 +5,7 @@ using TestWpfMvvmApp.Services;
 using TestWpfMvvmApp.ViewModel;
 using TestWpfMvvmApp.Services.Interfaces;
 using TestWpfMvvmApp.View;
+using Microsoft.Extensions.Http;
 
 namespace TestWpfMvvmApp
 {
@@ -33,10 +34,19 @@ namespace TestWpfMvvmApp
                     {
                         DataContext = s.GetRequiredService<UserViewModel>(),
                     });
+                    services.AddTransient(s => new RegisterWindow
+                    {
+                        DataContext = s.GetRequiredService<RegisterViewModel>(),
+                    });
 
                     services.AddSingleton<NavigationViewModel>();
                     services.AddSingleton<AuthViewModel>();
+                    services.AddSingleton<RegisterViewModel>();
                     services.AddSingleton<IAuthStateService, AuthStateService>();
+                    services.AddTransient<IUserService, UserService>();
+                    services.AddTransient<IDialogService, DialogService>();
+
+                    services.AddHttpClient();
                 })
                 .Build();
         }
