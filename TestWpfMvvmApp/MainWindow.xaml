@@ -46,5 +46,9 @@
                 <ContentControl x:Name="Auth" Content="{Binding AuthView}" />
             </Grid>
         </Grid>
+
+        <Button x:Name="CloseApp"
+                Style="{StaticResource ExitAppIcon}"
+                Command="{Binding ExitCommand}" />
     </Grid>
 </Window>

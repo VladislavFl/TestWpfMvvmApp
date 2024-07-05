@@ -68,6 +68,25 @@
             </Grid.Style>
         </Grid>
 
+
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Панель управления" FontSize="20" HorizontalAlignment="Center"
+                           Style="{StaticResource TextStyle}"/>
+            </StackPanel>
+
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsUserAuthorized}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+        </Grid>
+
         <Grid Grid.Row="1">
             <Button Content="Log out" Height="30" Width="100"
                     Style="{StaticResource BtnStyle}"

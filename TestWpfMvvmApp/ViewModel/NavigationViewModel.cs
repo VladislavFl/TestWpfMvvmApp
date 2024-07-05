@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using TestWpfMvvmApp.Services.Interfaces;
 using TestWpfMvvmApp.Utilities;
+using System.Windows;
 
 namespace TestWpfMvvmApp.ViewModel
 {
@@ -27,6 +28,7 @@ namespace TestWpfMvvmApp.ViewModel
         public ICommand UserCommand { get; set; }
         public ICommand InfoCommand { get; set; }
         public ICommand GuestCommand { get; set; }
+        public ICommand ExitCommand { get; set; }
 
         private void User(object obj)
         {
@@ -42,12 +44,17 @@ namespace TestWpfMvvmApp.ViewModel
 
         private void Info(object obj) => CurrentView = new InfoViewModel();
         private void Guest(object obj) => CurrentView = new GuestViewModel();
+        private void Exit(object obj)
+        {
+            Application.Current.Shutdown();
+        }
 
         public NavigationViewModel(IAuthStateService authStateService, IUserService userService, IDialogService dialogService)
         {
             UserCommand = new RelayCommand(User);
             InfoCommand = new RelayCommand(Info);
             GuestCommand = new RelayCommand(Guest);
+            ExitCommand = new RelayCommand(Exit);
 
             CurrentView = new GuestViewModel();
             AuthView = new AuthViewModel(authStateService, userService, dialogService);

@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <None Remove="Fonts\Roboto-Black.ttf" />
+    <None Remove="Images\shutdown_btn.png" />
+    <None Remove="Images\shutdown_btn2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +22,8 @@
 
   <ItemGroup>
     <Resource Include="Fonts\Roboto-Black.ttf" />
+    <Resource Include="Images\shutdown_btn.png" />
+    <Resource Include="Images\shutdown_btn2.png" />
   </ItemGroup>
 
 </Project>
