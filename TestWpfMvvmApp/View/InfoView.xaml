@@ -8,10 +8,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="630" d:DesignWidth="630">
 
-    <UserControl.DataContext>
-        <vm:InfoViewModel />
-    </UserControl.DataContext>
-
     <Grid>
         <TextBlock Text="{Binding DevInfo}" FontSize="28" 
                    HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"

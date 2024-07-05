@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using TestWpfMvvmApp.Services;
+using TestWpfMvvmApp.Services.Interfaces;
 using TestWpfMvvmApp.Utilities;
 
 namespace TestWpfMvvmApp.ViewModel
@@ -9,6 +9,7 @@ namespace TestWpfMvvmApp.ViewModel
         private object? _authView;
         private object? _currentView;
         private bool _isUserAuthorized;
+        private readonly IAuthStateService _authStateService;
 
 
         public object? CurrentView
@@ -35,7 +36,7 @@ namespace TestWpfMvvmApp.ViewModel
 
         private void User(object obj)
         {
-            if (IsUserAuthorized)
+            if (_authStateService.IsUserAuthorized)
             {
                 CurrentView = new UserViewModel();
             }
@@ -48,14 +49,15 @@ namespace TestWpfMvvmApp.ViewModel
         private void Info(object obj) => CurrentView = new InfoViewModel();
         private void Guest(object obj) => CurrentView = new GuestViewModel();
 
-        public NavigationViewModel()
+        public NavigationViewModel(IAuthStateService authStateService)
         {
             UserCommand = new RelayCommand(User);
             InfoCommand = new RelayCommand(Info);
             GuestCommand = new RelayCommand(Guest);
 
             CurrentView = new GuestViewModel();
-            AuthView = new AuthViewModel();
+            AuthView = new AuthViewModel(authStateService);
+            _authStateService = authStateService;
         }
     }
 }

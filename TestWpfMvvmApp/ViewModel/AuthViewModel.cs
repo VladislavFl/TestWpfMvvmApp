@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows;
 using TestWpfMvvmApp.Utilities;
 using TestWpfMvvmApp.Services;
+using TestWpfMvvmApp.Services.Interfaces;
 
 namespace TestWpfMvvmApp.ViewModel
 {
@@ -14,6 +15,7 @@ namespace TestWpfMvvmApp.ViewModel
     {
         private string _login = string.Empty;
         private string _password = string.Empty;
+        private readonly IAuthStateService _authStateService;
 
         public string Login
         {
@@ -39,7 +41,13 @@ namespace TestWpfMvvmApp.ViewModel
 
         private void AuthMethod()
         {
+            _authStateService.SetUserAuthorized(true);
             MessageBox.Show("ffgg");
+        }
+
+        public AuthViewModel(IAuthStateService authStateService)
+        {
+            _authStateService = authStateService;
         }
     }
 }

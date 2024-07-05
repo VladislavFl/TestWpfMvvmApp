@@ -11,9 +11,6 @@
         AllowsTransparency="True"
         Background="Transparent">
 
-    <Window.DataContext>
-        <vm:NavigationViewModel />
-    </Window.DataContext>
 
     <Grid>
         <Border Background="#404040" CornerRadius="20"/>

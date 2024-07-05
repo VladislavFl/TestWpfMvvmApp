@@ -8,9 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="630" d:DesignWidth="270">
 
-    <UserControl.DataContext>
-        <vm:AuthViewModel />
-    </UserControl.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>

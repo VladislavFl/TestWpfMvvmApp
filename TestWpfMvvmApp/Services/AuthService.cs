@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TestWpfMvvmApp.Services.Interfaces;
 
 namespace TestWpfMvvmApp.Services
 {
     public class AuthService
     {
-        public event Action? OnUserAuthenticated;
+        private readonly IAuthStateService _authStateService;
 
-        private bool _isAuthenticated;
-
-        public bool IsAuthenticated
+        public AuthService(IAuthStateService authStateService)
         {
-            get => _isAuthenticated;
-            set
-            {
-                if (_isAuthenticated != value)
-                {
-                    _isAuthenticated = value;
-                    OnUserAuthenticated?.Invoke();
-                }
-            }
+            _authStateService = authStateService;
+        }
+
+        public void SetUserAuthorized(bool isAuthorized)
+        {
+            _authStateService.IsUserAuthorized = isAuthorized;
+        }
+
+        public bool IsUserAuthorized()
+        {
+            return _authStateService.IsUserAuthorized;
         }
     }
 }

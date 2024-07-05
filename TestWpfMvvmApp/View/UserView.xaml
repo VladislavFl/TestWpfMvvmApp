@@ -8,10 +8,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="630" d:DesignWidth="630">
 
-    <UserControl.DataContext>
-        <vm:UserViewModel />
-    </UserControl.DataContext>
-
     <Grid>
         <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50 50 20 0">
 
